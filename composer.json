@@ -1,0 +1,21 @@
+{
+    "name": "christele/version7",
+    "description": "apprentissage POO Php",
+    "authors": [
+        {
+            "name": "Christ Garre",
+            "email": "christgarre@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\":"app/"
+        }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^4.2"
+    },
+    "require": {
+        "altorouter/altorouter": "^1.2"
+    }
+}
