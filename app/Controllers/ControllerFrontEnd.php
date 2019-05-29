@@ -39,18 +39,42 @@ class ControllerFrontEnd extends Controller{
             header('Location:/article/'.$articleId);
         }
     }
-    public function login(){
-        if ($_REQUEST['pseudo'] ==="jean" && $_REQUEST['motDePass'] === 'bonjour' || $_REQUEST['pseudo'] ==="christ" && $_REQUEST['motDePass'] === 'bonjour' || $_REQUEST['pseudo'] ==="david" && $_REQUEST['motDePass'] === 'bonjour')
-    {
-        header('Location:/edit');
-        session_start();
-        $_SESSION['user'] = $_REQUEST['pseudo'];
-    }else{
-        echo "Erreur d'identication, vous n'êtes pas autorisé(e) à vous connecter à cette section!";
-        //header('Location:/login');
+    
+    public function signalerComment($id){
+        $commentManager = new \App\Models\CommentManager();
+        $commentManager->signaler($id);
+        $articleId = $commentManager->articleId($id);
+        
+        header('Location:/article/'.$articleId);
     }
+    
+   public function envoiMail(){
+        $errors = [];
+
+        if (!array_key_exists('txtName', $_POST) || $_POST['txtName'] == ''){
+            $errors['txtName'] = "Le champs nom n'est pas complété !";
+        }
+        if (!array_key_exists('txtEmail', $_POST) || $_POST['txtEmail'] == '' || filter_var($_POST['txtEmail'], !FILTER_VALIDATE_EMAIL)){
+            $errors['txtEmail'] = "Le champs émail n'est pas valide";
+        }
+        if (!array_key_exists('txtMsg', $_POST) || $_POST['txtMsg'] == ''){
+            $errors['txtMsg'] = "Le champs message n'est pas complété !";
+        }
+        session_start();
+
+        if(!empty($errors)){
+            $_SESSION['errors'] = $errors;
+            $_SESSION['inputs'] = $_POST;
+            header('Location: /contact');
+        }else{
+            $_SESSION['success'] = 1;
+            $message = $_POST['txtMsg'];
+            
+
+            mail('forterochejann@gmail.com','Formulaire de contact', $message);
+            header('Location: /contact');
+        }
     }
    
- 
     
 }
