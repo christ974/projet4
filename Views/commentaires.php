@@ -1,45 +1,38 @@
-<?php 
-session_start();
-?>
-<?php
-    ob_start(); 
-?>
 <div class="container">
+   
     <h1>Administration des commentaires</h1>
     <br>
-    <h3>Commentaires</h3>
+    <h3>Commentaires signalés</h3>
+    <br>
     <?php
-        while($commentaire = $com->fetch()){
-            //dump($com); die();
+    while($req = $com->fetch()){
     ?>
-   <!-- <section id="commentaire">
-        <button type="button" class="btn btn-warning btn-circle btn-xl">supprimer</button>
 
-        <button type="button" class="btn btn-danger btn-circle btn-xl">confirmer</button>
-    </section>-->
-    
-    <span #auteur>
-    <button type="submit" class="btn btn-success btn-circle" name="suppression">supprimer</button>
-            - <?=nl2br (htmlspecialchars($commentaire['author'])); ?>
-            
+    <form method="POST" action="/commentaires-supprimer/<?= $req['id']; ?>" id="<?= $req['id']; ?>">
+        <input type="submit" class="btn btn-danger btn-circle" name="suppression" id="suppression" value="supprimer">
+    </form> <span #auteur>
+
+        - <?= nl2br (htmlspecialchars($req['author'])); ?>
     </span>
-        - le
-        <span #date>
-            <?= $commentaire['comment_date_fr']; ?>
-            <button type="submit" name="approuver"class="btn btn-primary btn-circle">approuver</button>
-        </span>
+    - le
+    <span class="date">
+        <?= $req['comment_date_fr']; ?>
 
-        <p id="contenu">
-            <?= nl2br(htmlspecialchars($commentaire['comment'])); ?>
-           
-        </p>
-        
-  <?php
+        <form method="POST" action="/commentaires-approuver/<?= $req['id']; ?>" id="<?= $req['id']; ?>">
+            <input type="submit" class="btn btn-warning btn-circle" name="approuver" id="approuver" value="approuver">
+        </form></span>
+
+    <p class="contenu">
+        <?= nl2br(htmlspecialchars($req['comment'])); ?>
+    </p>
+    <br>
+
+    <?php
         }
         $com->closeCursor(); // Termine le traitement de la requête
-    ?>  
+    ?>
 </div>
-<?php
-    $content = ob_get_clean();
-    require('../Views/template.php');
-?>
+
+<form action="/logout" method="post" id="deconnexion" class="deconnexion">
+    <input type="submit" value="Déconnexion">
+</form>
