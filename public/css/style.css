@@ -1,218 +1,326 @@
 body{
-  background-color: rgba(172, 169, 169, 0.23);
-  font-family: 'RobotoRegular', sans-serif;
-  padding-top: 10vh;
+    background-color: rgba(172, 169, 169, 0.23);
+    font-family: 'RobotoRegular', sans-serif;
+    margin-top: 13vh;
 }
 h1{
-  color: #4b65a9;
-  text-align: center;
+    color: #4b65a9;
+    text-align: center;
 }
 .contenaire{
-  display: flex;
-}
-
-#dernierChapitre{
-  display: inline-block;
-  padding-top: 2em;
+    display: flex;
 }
 h2{
-  color:#4b65a9;
+    color:#4b65a9;
 }
 h3{
-  color:#4b65a9;
-  padding-left: 2vw;
+    color:#4b65a9;
+    padding-left: 2vw;
 }
-
+p{
+    text-align: justify;
+}
+.autres{
+    text-align: center;
+}
 /******************************************************/
 footer{
-  padding-top: 2%;
-  padding-bottom: 2%;
-  background-color: #343a40;
-  text-align: center;
-  color: white;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    background-color: #343a40;
+    text-align: center;
+    color: white;
 }
 a{
-  color:#6d9cf5;
+    color:#6d9cf5;
 }
 
-  /*------------------indexViews----------------------*/
-  /*carrousel*/
+/*------------------indexViews----------------------*/
+/*carrousel*/
 #container{
-  display: flex;
-  margin:3em;
+    display: flex;
+    margin:2em;
 }
 .editeur{
-  margin: 2vw;
-  padding-left: 2vw;
-  border: 10px #2a63f575 solid;
+    margin: 2vw;
+    padding-left: 2vw;
+    border: 10px #2a63f575 solid;
 }
-#separator{
-  width: 5vw;
-  text-align: center;
-  padding-left: 10vw;
+.separator{
+    height: 5vh;
+}
+#pretitre{
+    text-align: center;
+    font-style: italic;
 }
 /****************************************************/
 
 /*--------------------article------------------------*/
+#container{
+    display: flex;
+    flex-direction: row;
+}
 #texteChap{
-  width: 63%;
-  padding-right: 4vw;
+    display: inline-block;
+    width: 60%;
+    padding-right: 4vw;
 }
-#titre{
-  color: #4b65a9;
-  font-weight: bold;
-  padding-bottom: 2vh;
+.titre{
+    color: #4b65a9!important;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding-bottom: 2vh;
 }
-#contenu{
-  font-style: italic;
+.contenu{
+    font-style: italic;
 }
-#date{
-  color:gray;
+.date{
+    color:gray;
 }
 #date_creation{
-  color:gray;
+    color:gray;
 }
 #textComm{
-  width:35%;
-  padding-left: 4vw;
-  text-align: right;
-  border-left: 6px #4b66a975 solid;
+    display: inline-block;
+    width:40%;
+    padding-left: 4vw;
+    text-align: right;
+    border-left: 6px #4b66a975 solid;
 }
 .comment{
-  background-color: #4b66a975; 
-  margin: 3em;
-  padding: 1em;
+    background-color: #4b66a975;
+    margin: 3em;
+    padding: 1em;
 }
 #author{
-  color: #4b65a9;
+    color: #4b65a9;
 }
-#mailAlert{
-  color: red;
-  font-weight: bolder;
-}
-.commentaires{
-  color: #4b65a9;
-  font-weight: bold;
-}
+
+
 /****************************************************/
 
 /*--------------------auteur------------------------*/
 #biographie{
-  margin: 2%;
-  text-align: justify;
+    margin: 4%;
+    text-align: justify;
 }
 #photoAuteur{
-  padding-left: 30%;
+    display: inline;
+    padding: 30vw;
 }
 /****************************************************/
+/*------------------login----------------------*/
+.espace{
+    margin-top: 25vh;
+    margin-bottom: 25vh;
+    padding-left: 2vw;
+    border: 10px #2a63f575 solid;
+}
 
 /*--------------------créer------------------------*/
+
 #envoyer{
-  margin-left: 18vw;
-  color: #fff;
-  background-color: #138496;
-  border-color: #117a8b;
+    margin-left: 18vw;
+    color: #fff;
+    background-color: #138496;
+    border-color: #117a8b;
+    margin-bottom: 10%;
+}
+#form_creer{
+    padding-bottom: 10vh;
 }
 /****************************************************/
 
 /*--------------------edit------------------------*/
+
 .imgEdit{
-  width: 40%;
-  margin-left: 20vw;
+    width: 40%;
+    margin-left: 20vw;
 }
 .operations{
-  display: flex;
+    display: flex;
+    flex-direction: row;
 }
 #mod{
-  display: inline block;
-  width: 50%;
-  padding-left: 3vw;
-  font-size: 1.2em;
-  font-weight: bold;
+    display: inline;
+    width: 45%;
+    padding-left: 5vw;
+    font-size: 1em;
+    font-weight: bold;
 }
 #comm{
-  display: inline block;
-  width: 50%;
-  padding-left: 3vw;
-  font-size: 1.2em;
-  font-weight: bold;
+    display: inline;
+    width: 45%;
+    padding-left: 11vw;
+    font-size: 1em;
+    font-weight: bold;
 }
-.mytextarea{
-  width: 88vw;
+ul{
+    color:rgb(51, 14, 187);
+}
+.deconnexion{
+    margin-left: 43%;
 }
 /****************************************************/
 
 /*--------------modifier chapitre ----------------------*/
 #modifier{
-  color: #fff;
-  background-color: #138496;
-  border-color: #117a8b;
-  margin-left: 68%;
+    color: #fff;
+    background-color: #138496;
+    border-color: #117a8b;
+    margin-left: 68%;
 }
 /****************************************************/
 
 /*--------------------supprimer-chapitre--------------*/
 #supprimer{
-  margin-left: 18vw;
-  color: #fff;
-  background-color: #138496;
-  border-color: #117a8b;
+    margin-left: 18vw;
+    color: #fff;
+    background-color: #138496;
+    border-color: #117a8b;
 }
 /****************************************************/
 /*--------------------commentaires------------------------*/
 
 .btn-circle.btn {
-  width: 70px;
-  height: 70px;
-  padding: 6px 8px;
-  font-size: 13px;
-  text-align: center;
-  line-height: 1.33;
-  border-radius: 35px;
+    width: 70px;
+    height: 70px;
+    padding: 6px 8px;
+    font-size: 13px;
+    text-align: center;
+    line-height: 1.33;
+    border-radius: 35px;
 }
-  
- 
-  
 
-
-
-
-
-.well {
-  background-color:gray!important;
-  padding: 2em!important;
-}
-legend{
-  font-size: 1em;
-  font-style: italic;
-}
-#basic-example{
-  width: 95%;
-  height: 50vh;
-}
+/*--------------------login------------------------*/
 #validation{
-color: #fff;
-background-color: #138496;
-border-color: #117a8b;
+    color: #fff;
+    background-color: #138496;
+    border-color: #117a8b;
+}
+/****************************************************/
+
+/*--------------------contact------------------------*/
+.blockContactForm{
+  background: #6d9cf5;
+}
+.contact-form{
+  background: #fff;
+  margin-top: 3%;
+
+  width: 70%;
+}
+.contact-form .form-control{
+  border-radius:1rem;
+}
+.contact-image{
+  text-align: center;
+}
+.contact-image img{
+  border-radius: 6rem;
+  width: 11%;
+  margin-top: -3%;
+  transform: rotate(29deg);
+}
+.contact-form form{
+  padding: 14%;
+}
+.contact-form form .row{
+  margin-bottom: -7%;
+}
+.contact-form h3{
+  margin-bottom: 8%;
+  margin-top: -10%;
+  text-align: center;
+  color: #0062cc;
+}
+.contact-form .btnContact {
+  width: 50%;
+  border: none;
+  border-radius: 1rem;
+  padding: 1.5%;
+  background: #dc3545;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+}
+.btnContactSubmit
+{
+  width: 50%;
+  border-radius: 1rem;
+  padding: 1.5%;
+  color: #fff;
+  background-color: #0062cc;
+  border: none;
+  cursor: pointer;
+}
+/****************************************************/
+/****************************************************/
+/****************************************************/
+
+
+
+
+/*------------------MEDIA QUERY------------------*/
+@media screen and (max-width:767px){
+    body{
+        margin-top: 17vh;
+    }
+
+    #photoAuteur{
+        display: none;
+    }
+    h1{
+        font-size: 1.6em!important;
+    }
+    h3{
+        font-size: 1.1em;
+    }
+    /*--------------------article------------------------*/
+
+    /****************************************************/
+    #container{
+        flex-direction: column;
+    }
+    #texteChap{
+        display: block;
+        width: auto;
+        padding-right: 2vw;
+    }
+    #textComm{
+        display: block;
+        width:auto;
+        padding-left: 2vw;
+        text-align: right;
+        border-left: 0px #4b66a975 solid;
+    }
+    /*--------------------edit------------------------*/
+    .operations{
+        display: flex;
+        flex-direction: column;
+    }
+    #mod{
+        display: block;
+        width: 80%;
+        padding-left: 1vw;
+        font-size: 1em;
+        font-weight: bold;
+    }
+    #comm{
+        display: block;
+        width: 80%;
+        padding-left: 1vw;
+        font-size: 1em;
+        font-weight: bold;
+    }
+
 }
 
-.edit{
- padding-left: 0vw;
+@media screen and (max-width:650px){
+    .deconnexion{
+        margin-left:33%;
+    }
 }
-
-#form_creer{
-  padding-bottom: 10vh;
-}
-#verif{
-  margin: 1em;
-  padding: 1em;
-  background-color: #4b66a975;
-  color: white;
-}
-
-
- 
- 
   
  
   
