@@ -3,17 +3,36 @@
 namespace App\Controllers;
 
 class ControllerBackEnd extends Controller{
+
+    public function __construct(){
+
+        //$this->verifier();
+    }
 /*Vérification session_star*/ 
     public function verifier(){
+       
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        
         if(!isset ($_SESSION['user'])){
-        die('merci de vous identifier');
+
+            header('Location:/login');
+            exit();
+        }else{
+           
         }
     }
-/*création de chapitre - indexViews */
+
+    /**
+     * création de chapitre - indexViews
+     *
+     * @return void
+     */
     public function addArticle()
     {
+        //$this->verifier();
         //$message = "Le chapitre est ajouté";
-       //$this->verifier();
         $titre = $_REQUEST['titre'];
         $contenu = $_REQUEST['contenu'];
         
@@ -24,13 +43,18 @@ class ControllerBackEnd extends Controller{
         header('Location:/article/'.$id);
         
     }
-/*liste des chapitres */
+
+    /**
+     * liste des chapitres
+     *
+     * @return void
+     */
     public function articlesList()
     {
         $manager = new \App\Models\ArticleManager();
         $articles = $manager->getArticles();
 
-        require '../Views/article.php';
+        $this->view("article",['articles' => $articles]);
     }
 
     public function getArtis()
@@ -38,10 +62,19 @@ class ControllerBackEnd extends Controller{
         $manager = new \App\Models\ArticleManager();
         $artis = $manager->getArticles();
 
-        require '../Views/modifier.php';
+        //require 'Views/modifier.php';
+        $this->view("modifier", ['artis' => $artis
+        ]);
     }
-/*modification chapitre */
+
+    /**
+     * modification chapitre
+     *
+     * @param int $id
+     * @return void
+     */
     public function updateArticle($id){
+        //$this->verifier();
         //dump($_REQUEST);
         $titre = $_REQUEST['titre'];
         $contenu = $_REQUEST['contenu'];
@@ -58,9 +91,16 @@ class ControllerBackEnd extends Controller{
         $manager = new \App\Models\ArticleManager();
         $arts = $manager->getArticles();
 
-        require '../Views/supprimer.php';
+        $this->view("supprimer", ['arts' => $arts
+        ]);
     }
-/*suppression chapitre */
+
+    /**
+     * suppression chapitre
+     *
+     * @param [type] $id
+     * @return void
+     */
     public function deleteArticle($id){
         $articleManager = new \App\Models\ArticleManager();
         $articleManager->delete($id);
@@ -71,18 +111,50 @@ class ControllerBackEnd extends Controller{
     }
 
     public function retourEdit(){
+        //$this->verifier();
         $articleManager = new \App\Models\ArticleManager();
         $ret = $articleManager->retour();
     }
 
+    /**
+     * récupère les commentaires signalés
+     *
+     * @return void
+     */
     public function getCom(){
-    $manager = new \App\Models\CommentManager();
-    $com = $manager->getCommentaires();
-    require '../Views/commentaires.php';
+        //$this->verifier();
+        $manager = new \App\Models\CommentManager();
+        $com = $manager->getCommentaires();
+
+        $this->view("commentaires", ['com' => $com
+        ]);
     }
 
-    public function supprimerCommentSignaler(){
+    /**
+     * supprime le commentaire signalé
+     *
+     * @return void
+     */
+    public function deleteComments($id){
+        //$this->verifier();
         $commentManager = new \App\Models\CommentManager();
-        $commentManager->deleteCommentSignale();
+        $commentManager->deleteCommentSignale($id);
+
+        header('Location:/commentaires'); 
     }
+
+    public function approuveComment($id){
+
+        $commentManager = new \App\Models\CommentManager();
+        $commentManager->approuveCommentSignale($id);
+
+        header('Location:/commentaires');
+    }
+    
+    public function formArticle(){
+        $this->verifier();
+        $this->view("creer", []);
+    }
+
+   
 }
