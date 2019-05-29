@@ -1,0 +1,61 @@
+<?php 
+session_start();
+?>
+<?php
+    ob_start(); 
+?>
+    <h1>Jann Forteroche</h1>
+    <br>
+ <div class="blockContactForm">  
+    <div class="container contact-form">
+            <div class="contact-image">
+                <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
+            </div>
+            <?php if(array_key_exists('errors', $_SESSION)): ?>
+                <div class="alert alert-danger" >
+                    <?= implode('<br>', $_SESSION['errors']); ?>
+                </div>
+            <?php unset($_SESSION['errors']); endif; ?>
+
+            <?php if(array_key_exists('success', $_SESSION)): ?>
+                <div class="alert alert-success" >
+                    Votre émail a bien été envoyé !
+                </div>
+            <?php unset($_SESSION['success']); endif; ?>
+            
+            <form method="post" action="/contact">
+                <h3>Envoyer un message</h3>
+               <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                                <label for="inputName"></label>
+                                    <input type="text" name="txtName" id="inputName" class="form-control" placeholder="Votre nom *" value="<?= isset($_SESSION['inputs']['txtName']) ? $_SESSION['inputs']['txtName'] : ''; ?>" />
+                                </div>
+                                <div class="form-group">
+                                <label for="inputEmail"></label>
+                                    <input type="email" name="txtEmail" id="inputEmail" class="form-control" placeholder="Votre émail *" value="<?= isset($_SESSION['inputs']['txtEmail']) ? $_SESSION['inputs']['txtEmail'] : ''; ?>" />
+                                </div>
+                        <div class="form-group">
+                            <input type="submit" name="btnSubmit" class="btnContact" value="Envoi" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                                <div class="form-group">
+                                <label for="inputMsg"></label>
+                                    <textarea name="txtMsg" class="form-control" id="inputMsg" placeholder="Votre message *" style="width: 100%; height: 150px;"><?= isset($_SESSION['inputs']['txtMsg']) ? $_SESSION['inputs']['txtMsg'] : ''; ?></textarea>
+                                </div>
+                            </div>
+                </div>
+            </form>
+        </div>
+    </div>
+ 
+<?php
+    $content = ob_get_clean();
+    require('Views/template.php');
+?>
+<?php
+unset($_SESSION['inputs']);
+unset($_SESSION['success']);
+unset($_SESSION['errors']);
+?>
