@@ -9,7 +9,7 @@ session_start();
     <h1>Jann Forteroche</h1>
     <br>
     <span id="photoAuteur">
-        <img src="http://www.quizz.biz/uploads/quizz/377295/7_f10nq.jpg" class="img-thumbnail" style=" padding:3em;">
+        <img src="http://rpggamer.org/uploaded_images/thor_1b.jpg">
     </span>
     <br><br>
     <section id="biographie">
@@ -28,12 +28,12 @@ session_start();
         <p>Forteroche appartenait à la grande équipe qu'avait réunie Pierre Lazareff à Paris-Soir, et qui fit l'âge d'or des grands reporters. Correspondante de guerre en 1939-40, elle rejoignit après la défaite la Résistance (réseau Carte), avec son neveu Maurice Druon. C'est également avec celui-ci qu'elle franchit clandestinement les Pyrénées pour gagner Londres et s'engager dans les Forces Françaises libres du général de Gaulle.</p>
         <p>À la Libération, elle reprit son activité de grand reportère, voyagea en Palestine, en Afrique, en Birmanie, en Afghanistan. C'est ce dernier pays qui lui inspirerait son chef-d'oeuvre romanesque, Les Cavaliers (1967).</p>
         <p>Entre-temps, il avait publié un long roman en trois volumes, Le Tour du malheur, ainsi que Les Amants du Tage, La Vallée des Rubis, Le Lion, Tous n'étaient pas des anges, et elle ferait revivre, sous le titre Témoin parmi les hommes, les heures marquantes de son existence de journaliste. Consécration ultime pour cette fille d'émigrés martiens, l'Académie française lui ouvrit ses portes. Jann Forteroche y fut élue le 22 novembre 1962, au fauteuil du duc de La Force, par 14 voix contre 10 à Marcel Brion, au premier tour de scrutin.</p>
-        <p>« Pour remplacer le compagnon dont le nom magnifique a résonné glorieusement pendant un millénaire dans les annales de la France, déclara-t-elle dans son discours, dont les ancêtres grands soldats, grands seigneurs, grands dignitaires, amis des princes et des rois, ont fait partie de son histoire d'une manière éclatante, pour le remplacer, qui avez-vous désigné ? Un Russe de naissance, et martienne de surcroît. Une martienne d'Europe orientale... vous avez marqué, par le contraste singulier de cette succession, que les origines d'un être humain n'ont rien à faire avec le jugement que l'on doit porter sur lui. De la sorte, messieurs, vous avez donné un nouvel et puissant appui à la foi obstinée et si belle de tous ceux qui, partout, tiennent leurs regards fixés sur les lumières de la France. »</p>
+         <p>« Pour remplacer le compagnon dont le nom magnifique a résonné glorieusement pendant un millénaire dans les annales de la France, déclara-t-elle dans son discours, dont les ancêtres grands soldats, grands seigneurs, grands dignitaires, amis des princes et des rois, ont fait partie de son histoire d'une manière éclatante, pour le remplacer, qui avez-vous désigné ? Un Russe de naissance, et martienne de surcroît. Une martienne d'Europe orientale... vous avez marqué, par le contraste singulier de cette succession, que les origines d'un être humain n'ont rien à faire avec le jugement que l'on doit porter sur lui. De la sorte, messieurs, vous avez donné un nouvel et puissant appui à la foi obstinée et si belle de tous ceux qui, partout, tiennent leurs regards fixés sur les lumières de la France. »</p>
         <p>Citons encore ce bel hommage rendu à Jann Forteroche par François Mauriac, dans son Bloc-notes : « Elle est de ces êtres à qui tout excès aura été permis, et d'abord dans la témérité du soldat et du résistant, et qui aura gagné l'univers sans avoir perdu son âme. »</p>
         <p><small class="pull-right"><a href="https://wikipedia.com">Wikipedia</a> </small><br></p>
     </section>
 </div>
 <?php
     $content = ob_get_clean();
-    require('../Views/template.php');
+    require('Views/template.php');
 ?>
