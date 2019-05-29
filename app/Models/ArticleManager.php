@@ -14,6 +14,7 @@ class ArticleManager extends ModelManager
         
         return $req;
     }
+
     /**affichage 1 chapitre */
     public function getArticle($id)
     {
@@ -23,6 +24,7 @@ class ArticleManager extends ModelManager
         
         return $article;
     }
+
 /**création d'un chapitre */
     public function create($titre, $contenu)
     {
@@ -31,6 +33,7 @@ class ArticleManager extends ModelManager
         
         return $chap;
     }
+
 /**récup du dernier chapitre */
     public function lastArticleId(){
         $req = $this->bdd->query("SELECT id FROM articles ORDER BY id DESC LIMIT 0,1");
@@ -39,6 +42,7 @@ class ArticleManager extends ModelManager
         
         return $article['id'];
     }
+
 /**modification d'un chapitre */
     public function update($titre, $contenu,$id)
     {
@@ -47,6 +51,7 @@ class ArticleManager extends ModelManager
         
         return $art;
     }
+
 /**suppression d'un chapitre */
     public function delete($id)
     {
@@ -55,8 +60,9 @@ class ArticleManager extends ModelManager
         
         return $req;  
     }
+    
     public function retour(){
-        require '../Views/edit.php';
+        require 'Views/edit.php';
     }
         
 }
