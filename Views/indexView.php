@@ -7,32 +7,38 @@ session_start();
 <br>
 
 <div class="container">
-    
-    <div id="carousel" class="carousel slide" data-ride="carousel">
-
-        <ol class="carousel-indicators">
-            <li data-target="#carousel" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel" data-slide-to="1"></li>
-            <li data-target="#carousel" data-slide-to="2"></li>
-        </ol>
-
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="https://www.carnets-de-traverse.com/blog/wp-content/uploads/2015/02/alaska-roadtrip12.jpg" alt="Femme seule de dos sur la ligne jaune au milieu d'une route dans un paysage montagneux">
+    <div class="carousel">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="https://www.carnets-de-traverse.com/blog/wp-content/uploads/2015/02/alaska-roadtrip12.jpg" alt="First slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Seule au monde</h5>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="https://www.visittheusa.fr/sites/default/files/styles/hero_m_1300x700/public/images/hero_media_image/2017-02/Alaska8_Web72DPI_2.jpg?itok=2T1bWB1V" alt="Second slide" ">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Danse aquatique</h5>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                 <img class="d-block w-100" src="https://spotlight.it-notes.ru/wp-content/uploads/2017/11/40113cec348c272dbd86dd17d62654c9.jpg" alt="Third slide">
+                 <div class="carousel-caption d-none d-md-block">
+                     <h5>Vie sous-glace</h5>
+                 </div>
+             </div>
             </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="https://www.visittheusa.fr/sites/default/files/styles/hero_m_1300x700/public/images/hero_media_image/2017-02/Alaska8_Web72DPI_2.jpg?itok=2T1bWB1V" alt="Alaska rêvée, image d'une baleine sautant hors de l'eau avec en arrière plan un paysage montagneux enneigé">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="https://spotlight.it-notes.ru/wp-content/uploads/2017/11/40113cec348c272dbd86dd17d62654c9.jpg" alt="Immensité, image d'un canyon de neige d'un camaïeu bleu très froid au fond duquel coule une rivière grise">
-            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only"> Previous </span> </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only"> Next </span> </a>
         </div>
-       
+
     </div>
+
 
     <section id="dernierChapitre">
 
-        <p>Jann Forteroche, actrice et écrivaine, vous propose son dernier roman en primeur ! Il est à découvrir au fil du temps</p>
+        <p id="pretitre">Jann Forteroche, actrice et écrivaine, vous propose son dernier roman en primeur ! Il est à découvrir au fil du temps</p>
         <h3>
             Chapitres à votre disposition :
         </h3>
@@ -41,47 +47,27 @@ session_start();
             <?php 
             while ($donnees = $articles->fetch()) {
             ?>
-            <span id='titre'>
+            <span class='titre'>
                 - <?=htmlspecialchars($donnees['titre'])?> -
             </span>
-            <span id="date">
+            <span class="date">
                 le <?= $donnees['date_creation_fr'] ?>
             </span>
-            <p id='contenu'>
+            <p class='contenu'>
                 <?=  substr(($donnees['contenu']),0, 500). '...<br> <a href="/article/'.$donnees['id'].'">Lire la suite - </a>' ?>
                 <a class="commentaires" href="article/<?=$donnees['id'] ?>">
                     Voir les commentaires
                 </a><br><br>
-               <span id="separator"> *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-</span>
+                <span class="separator"></span>
             </p>
-        
+
             <?php
             }
-        $articles->closeCursor(); // Termine le traitement de la requête
+                $articles->closeCursor(); // Termine le traitement de la requête
             ?>
 
-<br>
-<!--<div class="editeur">
-    <br>
-    <p>Pour accéder à l'espace administration, merci de vous identifier :</p>
+            <br>
 
-    <form action="/login" method="post">
+    </section>
 
-        <div class="form-group">
-            <label for="pseudo">Votre pseudo :</label>
-            <input type="text" class="form-control" name="pseudo" id="pseudo" placeholder="Entrez votre pseudo">
-        </div>
-        <div class="form-group">
-            <label for="motDePass">Mot de passe</label>
-            <input type="password" name="motDePass" class="form-control" id="motDePass" placeholder="Mot de passe">
-        </div>
-        <button id="validation" type="submit" class="btn btn-success">Se connecter</button>
-        <br>
-    </form>
-    <br>
-
-</div>-->
-
-</section>
-    
 </div>
