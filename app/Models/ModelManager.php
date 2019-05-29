@@ -7,7 +7,7 @@ abstract class ModelManager
     {
         try {
             // On se connecte à MySQL
-            $bdd = new \PDO('mysql:host=testcop;dbname=testphp;charset=utf8', 'root', '', array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION));
+            $bdd = new \PDO('mysql:host=***;dbname=***;charset=utf8', '***', '***', array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION));
 
             return $bdd;
             
