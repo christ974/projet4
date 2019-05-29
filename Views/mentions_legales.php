@@ -1,6 +1,3 @@
-<?php 
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -15,7 +12,7 @@ session_start();
 <body>
     <div>
         <p>
-            Pour tous renseignements complémentaires, veuillez lire les conditions du Règlement (UE) 2016/679 du Parlement européen et du Conseil du 27 avril 2016 sur le site officiel de la <a  id="cnil" href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees">CNIL.</a>  
+            Pour tous renseignements complémentaires, veuillez lire les conditions du Règlement (UE) 2016/679 du Parlement européen et du Conseil du 27 avril 2016 sur le site officiel de la <a id="cnil" href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees">CNIL.</a>
         </p>
 
         <h1>
@@ -35,7 +32,7 @@ session_start();
             LIMITATION DE RESPONSABILITÉ
         </h2>
         <p>
-        Albert Einsten Edition (A.E.E) France s'efforce d'assurer au mieux de ses possibilités, l'exactitude et la mise à jour des informations diffusées sur le Site et l'Application Mobile, dont elle se réserve le droit de corriger, à tout moment et sans préavis, le contenu. Toutefois, A.E.E France ne peut garantir l'exactitude, la précision ou l'exhaustivité des informations mises à la disposition sur le Site ou l'Application Mobile.<br>
+            Albert Einsten Edition (A.E.E) France s'efforce d'assurer au mieux de ses possibilités, l'exactitude et la mise à jour des informations diffusées sur le Site et l'Application Mobile, dont elle se réserve le droit de corriger, à tout moment et sans préavis, le contenu. Toutefois, A.E.E France ne peut garantir l'exactitude, la précision ou l'exhaustivité des informations mises à la disposition sur le Site ou l'Application Mobile.<br>
             En conséquence, A.E.E France décline toute responsabilité :
         </p>
         <span>
