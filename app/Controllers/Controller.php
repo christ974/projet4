@@ -16,7 +16,7 @@ abstract class Controller{
     }
     
     public function login(){
-        if ($_REQUEST['pseudo'] ==="jean" && $_REQUEST['motDePass'] === 'bonjour' || $_REQUEST['pseudo'] ==="christ" && $_REQUEST['motDePass'] === 'bonjour' || $_REQUEST['pseudo'] ==="david" && $_REQUEST['motDePass'] === 'bonjour')
+        if ($_REQUEST['pseudo'] ==="***" && $_REQUEST['motDePass'] === '***' || $_REQUEST['pseudo'] ==="***" && $_REQUEST['motDePass'] === '***' || $_REQUEST['pseudo'] ==="***" && $_REQUEST['motDePass'] === '***')
         {header('Location:/edit');
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();
