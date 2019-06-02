@@ -71,7 +71,7 @@ class ControllerFrontEnd extends Controller{
             $message = $_POST['txtMsg'];
             
 
-            mail('forterochejann@gmail.com','Formulaire de contact', $message);
+            mail('***','Formulaire de contact', $message);
             header('Location: /contact');
         }
     }
