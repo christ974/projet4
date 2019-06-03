@@ -6,21 +6,18 @@ class ControllerBackEnd extends Controller{
 
     public function __construct(){
 
-        //$this->verifier();
+       // $this->verifier();
     }
+    
 /*Vérification session_star*/ 
     public function verifier(){
-       
+        
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
-        
         if(!isset ($_SESSION['user'])){
-
             header('Location:/login');
             exit();
-        }else{
-           
         }
     }
 
@@ -31,8 +28,7 @@ class ControllerBackEnd extends Controller{
      */
     public function addArticle()
     {
-        //$this->verifier();
-        //$message = "Le chapitre est ajouté";
+        $this->verifier();
         $titre = $_REQUEST['titre'];
         $contenu = $_REQUEST['contenu'];
         
@@ -41,7 +37,6 @@ class ControllerBackEnd extends Controller{
         $id = $articleManager->lastArticleId();
         
         header('Location:/article/'.$id);
-        
     }
 
     /**
@@ -49,20 +44,20 @@ class ControllerBackEnd extends Controller{
      *
      * @return void
      */
-    public function articlesList()
-    {
+    public function articlesList(){
+        
         $manager = new \App\Models\ArticleManager();
         $articles = $manager->getArticles();
 
         $this->view("article",['articles' => $articles]);
     }
 
-    public function getArtis()
-    {
+    public function getArtis(){
+        
+        $this->verifier();
         $manager = new \App\Models\ArticleManager();
         $artis = $manager->getArticles();
 
-        //require 'Views/modifier.php';
         $this->view("modifier", ['artis' => $artis
         ]);
     }
@@ -74,8 +69,7 @@ class ControllerBackEnd extends Controller{
      * @return void
      */
     public function updateArticle($id){
-        //$this->verifier();
-        //dump($_REQUEST);
+
         $titre = $_REQUEST['titre'];
         $contenu = $_REQUEST['contenu'];
         //$id = $_REQUEST['id'];
@@ -83,11 +77,11 @@ class ControllerBackEnd extends Controller{
         $art = $articleManager->update($titre, $contenu, $id);
 
         header('Location:/article/'.$id); 
-       
     }
 
     public function getArts()
-    {
+    {   
+        $this->verifier();
         $manager = new \App\Models\ArticleManager();
         $arts = $manager->getArticles();
 
@@ -102,6 +96,7 @@ class ControllerBackEnd extends Controller{
      * @return void
      */
     public function deleteArticle($id){
+        
         $articleManager = new \App\Models\ArticleManager();
         $articleManager->delete($id);
         $commentManager = new \App\Models\CommentManager();
@@ -111,7 +106,7 @@ class ControllerBackEnd extends Controller{
     }
 
     public function retourEdit(){
-        //$this->verifier();
+
         $articleManager = new \App\Models\ArticleManager();
         $ret = $articleManager->retour();
     }
@@ -122,7 +117,8 @@ class ControllerBackEnd extends Controller{
      * @return void
      */
     public function getCom(){
-        //$this->verifier();
+        
+        $this->verifier();
         $manager = new \App\Models\CommentManager();
         $com = $manager->getCommentaires();
 
@@ -136,7 +132,7 @@ class ControllerBackEnd extends Controller{
      * @return void
      */
     public function deleteComments($id){
-        //$this->verifier();
+
         $commentManager = new \App\Models\CommentManager();
         $commentManager->deleteCommentSignale($id);
 
@@ -152,9 +148,10 @@ class ControllerBackEnd extends Controller{
     }
     
     public function formArticle(){
-        $this->verifier();
+
         $this->view("creer", []);
     }
 
    
 }
+
