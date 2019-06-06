@@ -3,21 +3,31 @@
 namespace App\Controllers;
 
 abstract class Controller{
-
+    
+     /**
+     * permet de ne pas indiquer l'extension
+     * @return void
+     */
     protected function view(String $view, Array $args)
     {
         foreach($args as $key => $value) {
             $$key = $value;
         }
         ob_start(); 
-        require '../Views/' . str_replace(".","/", $view)  . '.php';
+        require 'Views/' . str_replace(".","/", $view)  . '.php';
         $content = ob_get_clean();  
-        require '../Views/template.php';
+        require 'Views/template.php';
     }
     
-    public function login(){
-        if ($_REQUEST['pseudo'] ==="***" && $_REQUEST['motDePass'] === '***' || $_REQUEST['pseudo'] ==="***" && $_REQUEST['motDePass'] === '***' || $_REQUEST['pseudo'] ==="***" && $_REQUEST['motDePass'] === '***')
-        {header('Location:/edit');
+     /**
+     * permet de se connecter à l'administration
+     * @return void
+     */
+    public function login()
+    {
+        if ($_REQUEST['pseudo'] ==="jean" && $_REQUEST['motDePass'] === 'bonjour' || $_REQUEST['pseudo'] ==="christ" && $_REQUEST['motDePass'] === 'bonjour' || $_REQUEST['pseudo'] ==="david" && $_REQUEST['motDePass'] === 'bonjour')
+        {   
+            header('Location:/edit');
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();
             }
@@ -27,13 +37,15 @@ abstract class Controller{
             header('Location:/login?erreur=password');
         }
     }
-    public function logout(){
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-            $_SESSION = array();
-            unset($_SESSION['user']);;
-        }
-        //isset($_SESSION['user']);
+    
+     /**
+     * permet de se déconnecter de l'administration
+     * @return void
+     */
+    public function logout()
+    {
+        session_start();
+        unset($_SESSION['user']);;
         header('Location:/');
     }
 }
