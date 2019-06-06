@@ -1,12 +1,11 @@
 <?php 
 session_start();
 ?>
-
+<!--page d'un chapitre et de ses commentaires ainsi que de leur création-->
 <h1>
     Billet simple pour l'Alaska
 </h1>
 <section id="container">
-   
     <div id="texteChap">
         <h3 class='titre'>
             <?= htmlspecialchars($article['titre']); ?><br>
@@ -26,7 +25,6 @@ session_start();
         <?php 
             while ($comment = $comments->fetch()) {
         ?>
-
         <span #auteur>
             - <?= htmlspecialchars($comment['author']); ?>
         </span>
@@ -41,16 +39,16 @@ session_start();
             <form action="/comments/signaler/<?= $comment['id']; ?>" method="post">
                 <button type="submit" name="signaler" class="btn btn-danger">Signaler ce commentaire</button>
             </form>
+            <br>
 
         <?php
             }
             $comments->closeCursor(); // Termine le traitement de la requête
         ?>
         <br><br>
-
     </div>
-
 </section>
+
 <div class="comment">
     <h3>Commentaires :</h3>
     <br>
