@@ -4,15 +4,22 @@ namespace App\Controllers;
 
 class ControllerFrontEnd extends Controller{
 
-
+     /**
+     * liste des chapitres
+     * @return void
+     */
     public function listArticles()
     {
         $manager = new \App\Models\ArticleManager();
         $articles = $manager->getArticles();
-        //require '../Views/indexView.php';
+
         $this->view("indexView",['articles' => $articles]);
     }
-
+    
+     /**
+     * récupère chapitre & commentaires associés
+     * @return void
+     */
     public function article($id)
     { 
         $articleModel = new \App\Models\Article();
@@ -21,10 +28,14 @@ class ControllerFrontEnd extends Controller{
         $article = $articleModel->getArticle($id);
         $comments = $commentManager->getComments($id);
 
-        //require '../Views/article.php';
         $this->view("article",['article' => $article, 'comments'=>$comments]);
-    }
 
+    }
+    
+     /**
+     * poster un commentaire
+     * @return void
+     */
     public function addComment($articleId)
     {
         $author = $_REQUEST['author'];
@@ -40,15 +51,25 @@ class ControllerFrontEnd extends Controller{
         }
     }
     
-    public function signalerComment($id){
+     /**
+     * signale un commentaire
+     * @return void
+     */
+    public function reportComment($id)
+    {
         $commentManager = new \App\Models\CommentManager();
-        $commentManager->signaler($id);
+        $commentManager->pointOut($id);
         $articleId = $commentManager->articleId($id);
         
-        header('Location:/article/'.$articleId);
+       header('Location:/article/'.$articleId);
     }
     
-   public function envoiMail(){
+     /**
+     * envoi de mail
+     * @return void
+     */
+    public function sendingMail()
+    {
         $errors = [];
 
         if (!array_key_exists('txtName', $_POST) || $_POST['txtName'] == ''){
@@ -70,11 +91,8 @@ class ControllerFrontEnd extends Controller{
             $_SESSION['success'] = 1;
             $message = $_POST['txtMsg'];
             
-
-            mail('***','Formulaire de contact', $message);
+            mail('forterochejann@gmail.com','Formulaire de contact', $message);
             header('Location: /contact');
         }
-    }
-   
-    
+    } 
 }
