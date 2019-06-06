@@ -1,5 +1,5 @@
 <div class="container">
-   
+ <!--page d'administration des commentaires-->  
     <h1>Administration des commentaires</h1>
     <br>
     <h3>Commentaires signalés</h3>
@@ -36,3 +36,4 @@
 <form action="/logout" method="post" id="deconnexion" class="deconnexion">
     <input type="submit" value="Déconnexion">
 </form>
+ <br>
