@@ -2,16 +2,16 @@
 
 namespace App\Controllers;
 
-class ControllerBackEnd extends Controller{
-
+class ControllerBackEnd extends Controller
+{
     public function __construct(){
 
-       // $this->verifier();
+       // $this->check();
     }
     
-/*Vérification session_star*/ 
-    public function verifier(){
-        
+/*Vérification session_start*/ 
+    public function check()
+    {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
@@ -22,13 +22,13 @@ class ControllerBackEnd extends Controller{
     }
 
     /**
-     * création de chapitre - indexViews
-     *
+     * création de chapitre et renvoi au dernier chapitre
+     * créé dans indexViews
      * @return void
      */
     public function addArticle()
     {
-        $this->verifier();
+        $this->check();
         $titre = $_REQUEST['titre'];
         $contenu = $_REQUEST['contenu'];
         
@@ -41,20 +41,24 @@ class ControllerBackEnd extends Controller{
 
     /**
      * liste des chapitres
-     *
      * @return void
      */
-    public function articlesList(){
-        
+    public function articlesList()
+    {
+        $this->check();
         $manager = new \App\Models\ArticleManager();
         $articles = $manager->getArticles();
 
         $this->view("article",['articles' => $articles]);
     }
 
-    public function getArtis(){
-        
-        $this->verifier();
+    /**
+     * liste des chapitres
+     * @return void
+     */
+    public function getArtis()
+    {
+        $this->check();
         $manager = new \App\Models\ArticleManager();
         $artis = $manager->getArticles();
 
@@ -64,12 +68,12 @@ class ControllerBackEnd extends Controller{
 
     /**
      * modification chapitre
-     *
      * @param int $id
      * @return void
      */
-    public function updateArticle($id){
-
+    public function updateArticle($id)
+    {
+        $this->check();
         $titre = $_REQUEST['titre'];
         $contenu = $_REQUEST['contenu'];
         //$id = $_REQUEST['id'];
@@ -78,10 +82,14 @@ class ControllerBackEnd extends Controller{
 
         header('Location:/article/'.$id); 
     }
-
+    
+    /**
+     * liste des chapitres
+     * @return void
+     */
     public function getArts()
     {   
-        $this->verifier();
+        $this->check();
         $manager = new \App\Models\ArticleManager();
         $arts = $manager->getArticles();
 
@@ -91,12 +99,11 @@ class ControllerBackEnd extends Controller{
 
     /**
      * suppression chapitre
-     *
      * @param [type] $id
      * @return void
      */
-    public function deleteArticle($id){
-        
+    public function deleteArticle($id)
+    {
         $articleManager = new \App\Models\ArticleManager();
         $articleManager->delete($id);
         $commentManager = new \App\Models\CommentManager();
@@ -105,22 +112,22 @@ class ControllerBackEnd extends Controller{
         header('Location:/'); 
     }
 
-    public function retourEdit(){
-
+    public function retourEdit()
+    {
+        $this->check();
         $articleManager = new \App\Models\ArticleManager();
         $ret = $articleManager->retour();
     }
 
     /**
      * récupère les commentaires signalés
-     *
      * @return void
      */
-    public function getCom(){
-        
-        $this->verifier();
+    public function getCom()
+    {
+        $this->check();
         $manager = new \App\Models\CommentManager();
-        $com = $manager->getCommentaires();
+        $com = $manager->getCommentsSignals();
 
         $this->view("commentaires", ['com' => $com
         ]);
@@ -128,27 +135,30 @@ class ControllerBackEnd extends Controller{
 
     /**
      * supprime le commentaire signalé
-     *
      * @return void
      */
-    public function deleteComments($id){
-
+    public function deleteComments($id)
+    {
         $commentManager = new \App\Models\CommentManager();
         $commentManager->deleteCommentSignale($id);
 
         header('Location:/commentaires'); 
     }
-
-    public function approuveComment($id){
-
+    /**
+     * approuve les commentaires signalés
+     * @return void
+     */
+    public function approvedComment($id)
+    {
         $commentManager = new \App\Models\CommentManager();
-        $commentManager->approuveCommentSignale($id);
+        $commentManager->approvedCommentSignal($id);
 
         header('Location:/commentaires');
     }
     
-    public function formArticle(){
-
+    public function formArticle()
+    {
+        $this->check();
         $this->view("creer", []);
     }
 
