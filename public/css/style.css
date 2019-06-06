@@ -34,6 +34,9 @@ footer{
 a{
     color:#6d9cf5;
 }
+#css-validator{
+    padding-left: 10vw;
+}
 
 /*------------------indexViews----------------------*/
 /*carrousel*/
@@ -313,7 +316,6 @@ ul{
         font-size: 1em;
         font-weight: bold;
     }
-
 }
 
 @media screen and (max-width:650px){
