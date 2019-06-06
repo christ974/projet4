@@ -11,7 +11,6 @@ class CommentManager extends ModelManager
 
     /**
      * récupère les commentaires d'un article à partir de son id getComments.
-     *
      * @param [type] $postId
      */
     public function getComments($postId)
@@ -25,7 +24,6 @@ class CommentManager extends ModelManager
     
     /**
      * post un commentaire et l'affiche dans la page article
-     *
      * @param int $postId
      * @param  $author
      * @param  $comment
@@ -41,7 +39,6 @@ class CommentManager extends ModelManager
 
     /**
      * supprime les commentaires liés au chapitre supprimé
-     *
      * @param [type] $articleId
      * @return void
      */
@@ -52,20 +49,18 @@ class CommentManager extends ModelManager
 
     /**
      * signalement d'un commentaire page article
-     *
      * @return void
      */
-    public function signaler($id){
+    public function pointOut($id){
         $comments = $this->bdd->prepare('UPDATE comments SET signaler= ? WHERE id=?');
         $comments->execute(array(true,$id));
     }
 
     /**
      * récupère les commentaires signalés dans page administration
-     *
      * @return void
      */
-    public function getCommentaires()
+    public function getCommentsSignals()
     {  
         $comments = $this->bdd->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr, signaler FROM comments WHERE signaler=true')or die(print_r($this->bdd->errorInfo()));
 
@@ -76,7 +71,6 @@ class CommentManager extends ModelManager
 
     /**
      * supprime le commentaire signalé
-     *
      * @return void
      */
     public function deleteCommentSignale($id){
@@ -87,21 +81,24 @@ class CommentManager extends ModelManager
     
     /**
      * approuve le commentaire signalé
-     *
      * @param [type] $id
      * @return void
      */
-    public function approuveCommentSignale($id){
+    public function approvedCommentSignal($id){
         $comments = $this->bdd->prepare('UPDATE comments SET signaler =? WHERE id=?');
         $comments->execute(array(0,$id));
         
         return $comments;
     }
-
-    public function articleId($id){
-        
+    
+    /**
+     * récupère le commentaire associé au chapitre
+     * @param [type] $id
+     * @return void
+     */
+    public function articleId($id)
+    {
         $req = $this->bdd->prepare("SELECT id, post_id FROM comments WHERE id=?");
-
         $req->execute([$id]);
         $comment = $req->fetch();
         return $comment['post_id'];
