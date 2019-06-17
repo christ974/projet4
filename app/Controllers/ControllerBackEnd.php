@@ -4,12 +4,7 @@ namespace App\Controllers;
 
 class ControllerBackEnd extends Controller
 {
-    public function __construct(){
-
-       // $this->check();
-    }
-    
-/*Vérification session_start*/ 
+    /*Vérification session_start*/ 
     public function check()
     {
         if (session_status() === PHP_SESSION_NONE) {
@@ -76,7 +71,6 @@ class ControllerBackEnd extends Controller
         $this->check();
         $titre = $_REQUEST['titre'];
         $contenu = $_REQUEST['contenu'];
-        //$id = $_REQUEST['id'];
         $articleManager = new \App\Models\ArticleManager();
         $art = $articleManager->update($titre, $contenu, $id);
 
