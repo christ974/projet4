@@ -62,7 +62,7 @@ class CommentManager extends ModelManager
      */
     public function getCommentsSignals()
     {  
-        $comments = $this->bdd->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr, signaler FROM comments WHERE signaler=true')or die(print_r($this->bdd->errorInfo()));
+        $comments = $this->bdd->prepare('SELECT id, author, comment, post_id, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr, signaler FROM comments WHERE signaler=true')or die(print_r($this->bdd->errorInfo()));
 
         $comments->execute(array());
 
